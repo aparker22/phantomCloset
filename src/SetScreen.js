@@ -2,7 +2,7 @@ import React from 'react';
 
 let SetScreen = () => 
     <div>
-        <p>SetScreen</p>
+        <p>Set Screen</p>
     </div>
 
 

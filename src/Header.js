@@ -9,5 +9,4 @@ let Header = () =>
         <Link to='/profile'>Profile</Link>
     </div>
 
-
 export default Header;
