@@ -1,12 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import logo from './images/logo.png'
+import LinkToSet from './LinkToSet';
+import {connect} from 'react-redux';
 
-let Header = () => 
-    <div className="header">
-        <Link to='/'>Home</Link>
-        <Link to='/set'>Sets</Link>
-        <Link to='/card'>Individual Cards</Link>
-        <Link to='/profile'>Profile</Link>
+let mapStateToProps = (state) => {
+    return {setList: state.setList}
+};
+
+class Header extends Component {
+    
+    render(){
+    let {setList} = this.props;
+    return <div className="header">
+        <ul className="headerList">
+            <li><Link to='/'><img src={logo} className="headerLogo" alt="logo"/></Link></li>
+        </ul>
+        <ul className="headerList">{
+            setList.map(set => <LinkToSet set={set} key={set.id}/>)
+        }</ul>
+        <ul className="headerList">
+            <li><Link to='/profile'>Profile</Link></li>
+            <li><Link to='/login'>Login</Link></li>
+        </ul>
     </div>
+    }
+}
 
-export default Header;
+let HeaderComponent = connect(mapStateToProps)(Header)
+
+export default HeaderComponent;
