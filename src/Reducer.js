@@ -1,7 +1,7 @@
 import sets from './json/sets.json';
 import reducers from './actions';
 
-const initialState = {setList: sets}  
+const initialState = {setList: sets, cardList: []}  
 
 let fallbackReducer = state => state; 
 
