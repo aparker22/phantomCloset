@@ -6,14 +6,14 @@ import SetScreen from './SetScreen';
 import IndividualSetScreen from './IndividualSetScreen';
 import CardScreen from './CardScreen';
 import LoginScreen from './LoginScreen';
-import Header from './Header';
+import HeaderComponent from './Header';
 import Footer from './Footer';
 
 let Router = () => 
   <div className="container">
     <HashRouter>
         <div className="container">
-            <Header />
+            <HeaderComponent />
             <Route path="/" exact component={HomeScreen} />
             <Route path = "/profile" component={ProfileScreen} />
             <Route path = "/set" exact component={SetScreen} />

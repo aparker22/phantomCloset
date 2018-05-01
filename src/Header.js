@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import logo from './images/logo.png'
 import LinkToSet from './LinkToSet';
-import sets from './json/sets.json';
+import {connect} from 'react-redux';
 
-let setList = sets;
+let mapStateToProps = (state) => {
+    return {setList: state.setList}
+};
 
-let Header = () => 
-    <div className="header">
+class Header extends Component {
+    
+    render(){
+    let {setList} = this.props;
+    return <div className="header">
         <ul className="headerList">
             <li><Link to='/'><img src={logo} className="headerLogo" alt="logo"/></Link></li>
         </ul>
@@ -19,5 +24,9 @@ let Header = () =>
             <li><Link to='/login'>Login</Link></li>
         </ul>
     </div>
+    }
+}
 
-export default Header;
+let HeaderComponent = connect(mapStateToProps)(Header)
+
+export default HeaderComponent;

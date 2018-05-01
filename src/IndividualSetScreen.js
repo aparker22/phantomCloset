@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-let IndividualSetScreen = () => 
+class IndividualSet extends Component {
+  
+    render() {
+    let setName = this.props.match.params.setname;
+    
+    return( 
     <div>
-        <p>Individual Set Screen</p>
+        <p>{setName} Set Screen</p>
     </div>
-
-
-export default IndividualSetScreen;
+    )
+    }
+  }
+  
+  let IndividualSetScreen = connect(null)(IndividualSet)
+  
+  export default IndividualSetScreen;
