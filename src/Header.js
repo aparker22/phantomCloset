@@ -17,7 +17,6 @@ class Header extends Component {
     render(){
     let {setList} = this.props;
     let {active} = this.state;
-    console.log(active);
 
     let toggleActive = (e) => {
         if (active === true) {
