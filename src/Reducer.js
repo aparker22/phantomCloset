@@ -4,6 +4,8 @@ import reducers from './actions';
 const initialState = {
     setList: sets, 
     cardList: [],
+    userObject: {},
+    isUserLoggedIn: true,
     searchInput: '',
     searchAutocomplete: []
 }  
