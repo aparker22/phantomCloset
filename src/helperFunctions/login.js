@@ -14,3 +14,14 @@ export let loginWithUserData = (loginInformation) => {
     .then(res => res.json())
     .then(res => setLoginToLocalStorage(res)))
 }
+
+export let createNewUserInDatabase = (loginInformation) => {
+    return(fetch('localhost:3000/public/createaccount', 
+    {method: 'POST',
+    body: loginInformation,
+    headers: new Headers ({
+        'Content-Type': 'application/json'
+    })
+    })
+    .then(res => res.json()))
+}
