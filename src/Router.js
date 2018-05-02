@@ -6,8 +6,10 @@ import SetScreen from './SetScreen';
 import IndividualSetScreen from './IndividualSetScreen';
 import CardScreen from './CardScreen';
 import LoginScreen from './LoginScreen';
+import RegisterScreen from './RegisterScreen';
 import HeaderComponent from './Header';
 import Footer from './Footer';
+
 
 let Router = () => 
   <div className="container">
@@ -20,6 +22,7 @@ let Router = () =>
             <Route path = "/set/:setname" component={IndividualSetScreen} />
             <Route path = "/card/:card" component={CardScreen} />
             <Route path = "/login" component={LoginScreen} />
+            <Route path = "/register" component={RegisterScreen} />
             <Footer />
         </div>
     </HashRouter>

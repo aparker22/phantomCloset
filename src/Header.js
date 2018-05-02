@@ -5,7 +5,7 @@ import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
 
 let mapStateToProps = (state) => {
-    return {setList: state.setList}
+    return {setList: state.setList, isUserLoggedIn: state.isUserLoggedIn}
 };
 
 class Header extends Component {
@@ -15,9 +15,8 @@ class Header extends Component {
 	}
     
     render(){
-    let {setList} = this.props;
+    let {setList, isUserLoggedIn} = this.props;
     let {active} = this.state;
-    console.log(active);
 
     let toggleActive = (e) => {
         if (active === true) {
@@ -40,6 +39,14 @@ class Header extends Component {
         }
     };
 
+    let LoginOrProfileOption = () => {
+        if (isUserLoggedIn === true ) {
+            return <li><Link to='/profile'>Profile</Link></li>  
+        } else {
+            return <li><Link to='/login'>Login</Link> / <Link to='/register'>Create Account</Link></li>
+        }
+    }
+
     return <div className="header">
         <ul className="headerList">
             <li><Link to='/'><img src={logo} className="headerLogo" alt="logo"/></Link></li>
@@ -54,8 +61,7 @@ class Header extends Component {
             </button>
         </div>
         <ul className="headerList">
-            <li><Link to='/profile'>Profile</Link></li>
-            <li><Link to='/login'>Login</Link></li>
+            <LoginOrProfileOption />
         </ul>
     </div>
     }
