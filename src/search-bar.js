@@ -5,23 +5,21 @@ import { updateSearch, updateSearchResults } from './actions';
 import { getAutocomplete } from './fetch-data';
 
 let SearchBarDumb = ({ dispatch, searchInput, searchAutocomplete }) =>
-    <div className="search">
-        <div>
-            <input name="search-box" type="text" className="searchTerm" placeholder="What are you looking for?"
-                value={searchInput} onChange={(event) => {
-                    dispatch(updateSearch(event.target.value));
-                    if (event.target.value) {
-                        getAutocomplete(event.target.value)
-                        .then(results => dispatch(updateSearchResults(results)));
-                    } else {
-                        dispatch(updateSearchResults([]));
-                    }
-                }} />
-            <button type="submit" className="searchButton">
-                <i className="fa fa-search"></i>
-            </button>
-        </div>
-        <ul className="results">
+    <div>
+        <input name="search-box" type="text" className="searchTerm" placeholder="What are you looking for?"
+            value={searchInput} onChange={(event) => {
+                dispatch(updateSearch(event.target.value));
+                if (event.target.value) {
+                    getAutocomplete(event.target.value)
+                    .then(results => dispatch(updateSearchResults(results)));
+                } else {
+                    dispatch(updateSearchResults([]));
+                }
+            }} />
+        <button type="submit" className="searchButton">
+            <i className="fa fa-search"></i>
+        </button>
+        <ul className="setListDropdownMenu">
             {
                 searchAutocomplete.map(result =>
                     <li>{result}</li>
