@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {loginWithUserData} from './helperFunctions/login';
 import {updateJWT} from './actions';
-import './stylesheets/login.css';  
 
 let mapStateToProps = (state) => {
     return {jwt: state.jwt}
