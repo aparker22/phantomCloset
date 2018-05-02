@@ -1,10 +1,11 @@
 let setLoginToLocalStorage = (userInfo) => {
-    let jwt = JSON.stringify(userInfo);
-    localStorage.setItem('jwt', jwt);
+    let userObject = JSON.stringify(userInfo);
+    localStorage.setItem('userObject', userObject);
+    return userInfo;
 }
 
 export let loginWithUserData = (loginInformation) => {
-    return(fetch('localhost:3000/public/signin', 
+    return(fetch('https://phantom-closet.herokuapp.com//public/signin', 
     {method: 'POST',
     body: loginInformation,
     headers: new Headers ({
@@ -16,7 +17,7 @@ export let loginWithUserData = (loginInformation) => {
 }
 
 export let createNewUserInDatabase = (loginInformation) => {
-    return(fetch('localhost:3000/public/createaccount', 
+    return(fetch('https://phantom-closet.herokuapp.com/public/createaccount', 
     {method: 'POST',
     body: loginInformation,
     headers: new Headers ({

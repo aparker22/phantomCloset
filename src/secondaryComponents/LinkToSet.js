@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-let LinkToSet = ({set}) => <Link to={`/set/${set.name}`}>{set.name}</Link>
+let LinkToSet = ({set}) => <Link to={`/set/${set}`} key={set}>{set}</Link>
 
 export default LinkToSet;

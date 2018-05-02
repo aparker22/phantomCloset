@@ -10,6 +10,7 @@ html, body {
   height: 100%;
   background-color: black;
   color: white; 
+  overflow: auto; 
 }
 
 .header {
@@ -144,12 +145,13 @@ input, button {
   top: 61px;
   background-color: black;
   width: 30%;
-  height: 50%;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .setListDropdownMenu li {
   width: 100%;
-  height: 20%;
+  height: 40px;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
   display: flex;

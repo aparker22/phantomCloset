@@ -17,7 +17,7 @@ let submitUserLoginInformation = (event, dispatch, history) => {
     let username = event.target.username.value;
     let password = event.target.password.value;
     event.target.reset();
-    let JSONLoginInfo = { username, password }
+    let JSONLoginInfo = { password, username }
     loginWithUserData(JSON.stringify(JSONLoginInfo))
     .then(res => dispatch(updateJWT(res)))
     .then(history.push(`/`))

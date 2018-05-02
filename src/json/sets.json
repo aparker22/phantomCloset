@@ -1,9 +1,3 @@
 [
-    { "id": 1, "name": "Creature" },
-    { "id": 2, "name": "Artifact" },
-    { "id": 3, "name": "Land" },
-    { "id": 4, "name": "Planeswalker"},
-    { "id": 5, "name": "Enchantment" },
-    { "id": 6, "name": "Instant" },
-    { "id": 7, "name": "Sorcery"}
+    "Creature", "Artifact", "Land", "Planeswalker", "Enchantment", "Instant", "Sorcery"
 ]

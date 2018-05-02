@@ -25,9 +25,8 @@ let registerNewUser = (event, dispatch, history) => {
 let RegisterScreenDumb = ({ dispatch, jwt, history }) =>
     <div className="login-page">
         <form className="login-form" onSubmit={registerNewUser} >
-        <input type="text" name="name" placeholder="name"/>
-        <input type="password" name="password" placeholder="password"/>
-        <input type="text" name="email" placeholder="email address"/>
+        <input type="text" name="username" placeholder="Choose a Username"/>
+        <input type="password" name="password" placeholder="Choose a Password"/>
         <button type="submit">Create</button>
         <p className="message">Already registered? <Link to="/login">Sign In</Link></p>
         </form>
