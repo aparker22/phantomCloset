@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
+import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
     return {setList: state.setList}
@@ -47,12 +48,7 @@ class Header extends Component {
         <div className="setListDropdown" onClick={toggleActive}>{
             <MenuFunction />
         }</div>
-            <div className="search">
-            <input type="text" className="searchTerm" placeholder="What are you looking for?" />
-            <button type="submit" className="searchButton">
-            <i className="fa fa-search"></i>
-            </button>
-        </div>
+            <SearchBar />
         <ul className="headerList">
             <li><Link to='/profile'>Profile</Link></li>
             <li><Link to='/login'>Login</Link></li>
