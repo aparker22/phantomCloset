@@ -1,6 +1,6 @@
 /* cardDetail.css */
 
-.card img{
+.card img {
     height: 200px;
     width: 150px;
     border: 1px solid black;
@@ -14,18 +14,12 @@
     height: 100%;
     width: 100%;
 }
-/* 
-.card:hover {
-    transform: translateY(-10px);
-    height: 150px;
-    width: 100px;
-    border: 1px solid #1a57ba;
-    box-shadow: .3em .3em .6em #528ff2;
+
+.card img:hover {
+    top:50%;
+    left:50%;
+    width: 300px;
+    height: 400px;
+    margin-left:-50px;
+    margin-top:-50px;
 }
-
-/* .card:hover{
-    position: fixed;
-    z-index: 1;
-    transform: scale(2.5) translate(50%, -50%);
-} */
-
