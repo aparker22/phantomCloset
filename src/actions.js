@@ -38,6 +38,7 @@ let addToQueueAction = (state, action) => {
     ({...state, cardQueue: newQueue});
 }
 addToQueueAction.toString = () => ADD_TO_QUEUE;
+
 const UPDATE_CARD_LIST = "UPDATE_CARD_LIST";
 export let updateCardList = (listFromServer) => ({type: UPDATE_CARD_LIST, payload: listFromServer});
 let updateCardListAction = (state, action) => {

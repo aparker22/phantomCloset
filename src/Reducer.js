@@ -10,15 +10,6 @@ const initialState = {
     cardQueue: []
 }
 
-let checkLocalStorageForUserObject = () => {
-    let userObject = localStorage.getItem('userObject');
-    if (userObject) {
-        return userObject;
-    } else {
-        return {};
-    }
-}
-
 let fallbackReducer = state => state; 
 
 let reducer = (state = initialState, action) => {
