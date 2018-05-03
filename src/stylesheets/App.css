@@ -30,6 +30,15 @@ html, body {
   background-color: black;
 }
 
+.search-bar-div {
+  height: 100%;
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .headerList {
   height: 100%;
   list-style: none;
