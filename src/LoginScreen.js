@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {loginWithUserData} from './helperFunctions/login';
-import {updateUserObject} from './actions';
+import {updateUserObject, updateIsUserLoggedIn} from './actions';
 
 let mapStateToProps = (state) => {
     return {userObject: state.userObject}
@@ -20,6 +20,7 @@ let submitUserLoginInformation = (event, dispatch, history) => {
     let JSONLoginInfo = { password, username }
     loginWithUserData(JSON.stringify(JSONLoginInfo))
     .then(res => dispatch(updateUserObject(res)))
+    .then(dispatch(updateIsUserLoggedIn()))
     .then(history.push(`/`))
 };
 
