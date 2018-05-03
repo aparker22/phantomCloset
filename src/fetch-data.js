@@ -7,7 +7,7 @@ export let postCardToQueue = (input, token) =>
     fetch(`http://localhost:5000/private/addtoqueue`,
       {
         method: "POST",
-        body: input,
+        body: JSON.stringify(input),
         headers: new Headers ({
               "Content-Type": "application/json",
               "authorization": token

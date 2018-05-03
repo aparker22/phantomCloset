@@ -11,11 +11,12 @@ let buttonLogic = (userObject, card, cardQueue, addToQueue) => {
     if (userObject) {
         return(
             <button onClick={
-                () => postCardToQueue({
+                () => {console.log(userObject.token)
+                postCardToQueue({
                     cardId: card.cardid,
                     userId: userObject.id,
                     position: cardQueue.length
-                }, userObject.token).then(addToQueue({ card }))
+                }, userObject.token).then(addToQueue({ card }))}
             } > Add Card to Queue
             </button>
     )}
@@ -26,10 +27,10 @@ let CardDetail = ({card, addToQueue, userObject, cardQueue}) => {
         <div className="card-container">
             <div className="card">
             <Link to={`/card/${card.name}`} key={card.cardid}><img src={card.imageurl} alt={card.name} /></Link>
-                {
-                    buttonLogic(userObject, card, cardQueue, addToQueue)
-                }
             </div>
+            {
+                buttonLogic(userObject, card, cardQueue, addToQueue)
+            }
         </div>
     );
 }

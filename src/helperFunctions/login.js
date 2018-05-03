@@ -12,7 +12,7 @@ export let loginWithUserData = (loginInformation) => {
         "Content-Type": "application/json"
     })
     })
-    .then(res=>res.text())
+    .then(res=>res.json())
     .then(res => setLoginToLocalStorage(res)))
 }
 
@@ -24,5 +24,5 @@ export let createNewUserInDatabase = (loginInformation) => {
         'Content-Type': 'application/json'
     })
     })
-    .then(res => res.text()))
+    .then(res => res.json()))
 }
