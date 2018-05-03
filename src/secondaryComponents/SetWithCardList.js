@@ -2,9 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import CardDetail from '../CardDetail';
 
-let LinkToSet = ({setList, cardList}) => {
-    return setList.map(set => 
-    <div className="homeScreenSetList" key={set}>
+let LinkToSet = ({set, cardList}) => {
+    return <div className="setList" key={set}>
         <Link to={`/set/${set}`} key={set}>{set}</Link>
         <div className="setCardList">{
             cardList.map((card) => {
@@ -15,7 +14,8 @@ let LinkToSet = ({setList, cardList}) => {
                 }
             })
         }</div>
-    </div>)
+    </div>
 }
+
 
 export default LinkToSet;

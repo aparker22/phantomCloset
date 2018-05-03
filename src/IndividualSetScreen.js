@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
+import LinkToSet from './secondaryComponents/SetWithCardList';
 
-class IndividualSet extends Component {
-  
-    render() {
-    let setName = this.props.match.params.setname;
-    
-    return( 
-    <div>
-        <p>{setName} Set Screen</p>
+let SetScreenDumb = ({setName, cardList}) => {
+    return <div>
+        <LinkToSet set={setName} cardList={cardList} />
     </div>
-    )
-    }
-  }
-  
-  let IndividualSetScreen = connect(null)(IndividualSet)
-  
-  export default IndividualSetScreen;
+}
+
+let mapStateToProps = (state, {match}) => {
+    let setName = state.setList.find(set =>
+        set === match.params.setname);
+    return {cardList: state.cardList, setName, match};
+}
+
+let IndividualSetScreen = connect(mapStateToProps)(SetScreenDumb);
+
+export default IndividualSetScreen;
