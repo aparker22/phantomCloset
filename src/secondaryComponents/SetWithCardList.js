@@ -1,11 +1,21 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import CardDetail from '../CardDetail';
 
-let LinkToSet = ({setList}) => {
-    return setList.map(set => 
-    <div className="homeScreenSetList" key={set}>
+let LinkToSet = ({set, cardList}) => {
+    return <div className="setList" key={set}>
         <Link to={`/set/${set}`} key={set}>{set}</Link>
-    </div>)
+        <div className="setCardList">{
+            cardList.map((card) => {
+                if (card.setname === set) {
+                    return <CardDetail card={card} />
+                } else {
+                    return null
+                }
+            })
+        }</div>
+    </div>
 }
+
 
 export default LinkToSet;

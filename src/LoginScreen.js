@@ -2,10 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {loginWithUserData} from './helperFunctions/login';
-import {updateJWT} from './actions';
+import {updateUserObject, updateIsUserLoggedIn} from './actions';
 
 let mapStateToProps = (state) => {
-    return {jwt: state.jwt}
+    return {userObject: state.userObject}
 };  
 
 let mapDispatchToProps = (dispatch, props) => {
@@ -19,7 +19,8 @@ let submitUserLoginInformation = (event, dispatch, history) => {
     event.target.reset();
     let JSONLoginInfo = { password, username }
     loginWithUserData(JSON.stringify(JSONLoginInfo))
-    .then(res => dispatch(updateJWT(res)))
+    .then(res => dispatch(updateUserObject(res)))
+    .then(dispatch(updateIsUserLoggedIn()))
     .then(history.push(`/`))
 };
 

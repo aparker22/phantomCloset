@@ -19,12 +19,12 @@ let buttonLogic = (userObject, card, cardQueue, addCardToQueue) => {
             </button>
     )}
 }
-
+// assume card object is passed down as props
 let CardDetail = ({card, addCardToQueue, userObject, cardQueue}) => {
-    return(
+    return (
         <div className="card-container">
             <div className="card">
-                <img src={card.imageurl} alt="card image" />
+            <Link to={`/card/${card.name}`} key={card.cardid}><img src={card.imageurl} alt={card.name} /></Link>
                 {
                     buttonLogic(userObject, card, cardQueue, addCardToQueue)
                 }
@@ -43,9 +43,9 @@ let mapStateToProps = (state, { card }) => {
 };
 
 let mapDispatchToProps = (dispatch) => {
-    return {
-        addCardToQueue: (card) => dispatch(addToQueue(card))
-    };
+   return {
+       addCardToQueue: (card) => dispatch(addToQueue(card))
+   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(CardDetail);
+

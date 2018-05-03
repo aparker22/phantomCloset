@@ -3,17 +3,18 @@ import SetWithCardList from './secondaryComponents/SetWithCardList';
 import {connect} from 'react-redux';
 
 let mapStateToProps = (state) => {
-    return {setList: state.setList}
+    return {setList: state.setList, cardList: state.cardList}
 };  
 
 let mapDispatchToProps = (dispatch) => {
   return {dispatch: dispatch}
 };
 
-let HomeScreenDumb = ({ dispatch, setList, history }) => 
+let HomeScreenDumb = ({ dispatch, setList, cardList, history }) => 
     <div className="homeScreen">
-        <div className="homeScreenTop"></div>
-        <SetWithCardList setList={setList} />
+        <div className="homeScreenTop"></div>{
+            setList.map( set => <SetWithCardList set={set} cardList={cardList} />)
+        }
     </div>
 
 

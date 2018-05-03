@@ -1,3 +1,17 @@
+const UPDATE_USER_OBJECT = "UPDATE_USER_OBJECT";
+export let updateUserObject = (token) => ({type: UPDATE_USER_OBJECT, payload: token});
+let updateUserObjectAction = (state, action) => {
+    return ({...state, userObject: action.payload});
+  }
+updateUserObject.toString = () => UPDATE_USER_OBJECT;
+
+const UPDATE_IS_USER_LOGGED_IN = "UPDATE_IS_USER_LOGGED_IN";
+export let updateIsUserLoggedIn = () => ({type: UPDATE_IS_USER_LOGGED_IN});
+let updateIsUserLoggedInAction = (state, action) => {
+    return ({...state, isUserLoggedIn: true});
+  }
+updateIsUserLoggedIn.toString = () => UPDATE_IS_USER_LOGGED_IN;
+
 const UPDATE_SEARCH = 'UPDATE_SEARCH'
 export let updateSearch = (payload) => ({ type: UPDATE_SEARCH, payload });
 let updateSearchAction = (state, action) =>
@@ -9,13 +23,6 @@ export let updateSearchResults = (payload) => ({ type: UPDATE_SEARCH_RESULTS, pa
 let updateSearchResultsAction = (state, action) =>
     ({...state, searchAutocomplete: action.payload});
 updateSearchResultsAction.toString = () => UPDATE_SEARCH_RESULTS;
-
-const UPDATE_JWT = "UPDATE_JWT";
-export let updateJWT = (token) => ({type: UPDATE_JWT, payload: token});
-let updateJWTAction = (state, action) => {
-    return ({...state, jwt: action.payload});
-}
-updateJWT.toString = () => UPDATE_JWT;
 
 const UPDATE_SET_LIST = "UPDATE_SET_LIST";
 export let updateSetList = (listFromServer) => ({type: UPDATE_SET_LIST, payload: listFromServer});
@@ -31,10 +38,18 @@ let addToQueueAction = (state, action) => {
     ({...state, cardQueue: newQueue});
 }
 addToQueueAction.toString = () => ADD_TO_QUEUE;
+const UPDATE_CARD_LIST = "UPDATE_CARD_LIST";
+export let updateCardList = (listFromServer) => ({type: UPDATE_CARD_LIST, payload: listFromServer});
+let updateCardListAction = (state, action) => {
+    return ({...state, cardList: action.payload});
+}
+updateCardList.toString = () => UPDATE_CARD_LIST;
 
 let reducers = {
-    [updateJWT]: updateJWTAction,
+    [updateUserObject]: updateUserObjectAction,
+    [updateIsUserLoggedIn]: updateIsUserLoggedInAction,
     [updateSetList]: updateSetListAction,
+    [updateCardList]: updateCardListAction,
     [updateSearchAction]: updateSearchAction,
     [updateSearchResultsAction]: updateSearchResultsAction,
     [addToQueueAction]: addToQueueAction
