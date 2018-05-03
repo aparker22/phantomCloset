@@ -1,7 +1,15 @@
 import sets from './json/sets.json';
 import reducers from './actions';
 
-const initialState = {setList: sets, cardList: [], cardQueue: []}  
+
+const initialState = {
+    setList: sets, 
+    userObject: {},
+    isUserLoggedIn: false,
+    searchInput: '',
+    searchAutocomplete: [],
+    cardQueue: []
+}
 
 let fallbackReducer = state => state; 
 

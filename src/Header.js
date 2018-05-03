@@ -3,21 +3,32 @@ import {Link} from 'react-router-dom';
 import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
+import {fetchSetList} from './helperFunctions/headerFetchRequests';
+import {updateSetList} from './actions';
+import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
-    return {setList: state.setList}
+    return {setList: state.setList, isUserLoggedIn: state.isUserLoggedIn}
 };
+
+let mapDispatchToProps = (dispatch) => {
+    return {dispatch: dispatch}
+  };
 
 class Header extends Component {
     constructor(props) {
 		super(props);
 		this.state = {active: false};
-	}
+    }
+    
+    componentDidMount() {
+        fetchSetList()
+        .then(res => this.props.dispatch(updateSetList(res)))
+    }
     
     render(){
-    let {setList} = this.props;
+    let {setList, isUserLoggedIn} = this.props;
     let {active} = this.state;
-    console.log(active);
 
     let toggleActive = (e) => {
         if (active === true) {
@@ -34,11 +45,19 @@ class Header extends Component {
         } else {
             return(
                 <ul className="setListDropdownMenu">{
-                    setList.map(set => <li><LinkToSet set={set} key={set.name}/></li>)
+                    setList.map(set => <li><LinkToSet set={set} key={set}/></li>)
                 }
                 <li onClick={toggleActive}>Close</li></ul>)
         }
     };
+
+    let LoginOrProfileOption = () => {
+        if (isUserLoggedIn === true ) {
+            return <li><Link to='/profile'>Profile</Link></li>  
+        } else {
+            return <li><Link to='/login'>Login</Link> / <Link to='/register'>Create Account</Link></li>
+        }
+    }
 
     return <div className="header">
         <ul className="headerList">
@@ -47,20 +66,14 @@ class Header extends Component {
         <div className="setListDropdown" onClick={toggleActive}>{
             <MenuFunction />
         }</div>
-            <div className="search">
-            <input type="text" className="searchTerm" placeholder="What are you looking for?" />
-            <button type="submit" className="searchButton">
-            <i className="fa fa-search"></i>
-            </button>
-        </div>
+            <SearchBar />
         <ul className="headerList">
-            <li><Link to='/profile'>Profile</Link></li>
-            <li><Link to='/login'>Login</Link></li>
+            <LoginOrProfileOption />
         </ul>
     </div>
     }
 }
 
-let HeaderComponent = connect(mapStateToProps)(Header)
+let HeaderComponent = connect(mapStateToProps, mapDispatchToProps)(Header)
 
 export default HeaderComponent;
