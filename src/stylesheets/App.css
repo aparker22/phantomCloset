@@ -91,6 +91,21 @@ html, body {
   background-repeat: no-repeat;
 }
 
+.homeScreenSetList {
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.setCardList {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .search {
   width: 30%;
   height: 100%;
