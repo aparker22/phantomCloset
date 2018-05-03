@@ -1,4 +1,3 @@
-import sets from './json/sets.json';
 import reducers from './actions';
 
 const initialState = {

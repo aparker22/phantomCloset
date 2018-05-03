@@ -5,6 +5,13 @@ let updateUserObjectAction = (state, action) => {
   }
 updateUserObject.toString = () => UPDATE_USER_OBJECT;
 
+const UPDATE_IS_USER_LOGGED_IN = "UPDATE_IS_USER_LOGGED_IN";
+export let updateIsUserLoggedIn = () => ({type: UPDATE_IS_USER_LOGGED_IN});
+let updateIsUserLoggedInAction = (state, action) => {
+    return ({...state, isUserLoggedIn: true});
+  }
+updateIsUserLoggedIn.toString = () => UPDATE_IS_USER_LOGGED_IN;
+
 const UPDATE_SEARCH = 'UPDATE_SEARCH'
 export let updateSearch = (payload) => ({ type: UPDATE_SEARCH, payload });
 let updateSearchAction = (state, action) =>
@@ -33,6 +40,7 @@ updateCardList.toString = () => UPDATE_CARD_LIST;
 
 let reducers = {
     [updateUserObject]: updateUserObjectAction,
+    [updateIsUserLoggedIn]: updateIsUserLoggedInAction,
     [updateSetList]: updateSetListAction,
     [updateCardList]: updateCardListAction,
     [updateSearchAction]: updateSearchAction,
