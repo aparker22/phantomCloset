@@ -6,8 +6,8 @@ let mapStateToProps = (state) => {
     return {setList: state.setList}
 };  
 
-let mapDispatchToProps = (dispatch, props) => {
-  return {dispatch: dispatch, history: props.history}
+let mapDispatchToProps = (dispatch) => {
+  return {dispatch: dispatch}
 };
 
 let HomeScreenDumb = ({ dispatch, setList, history }) => 

@@ -5,14 +5,14 @@ let setLoginToLocalStorage = (userInfo) => {
 }
 
 export let loginWithUserData = (loginInformation) => {
-    return(fetch('https://phantom-closet.herokuapp.com//public/signin', 
-    {method: 'POST',
+    return(fetch("https://phantom-closet.herokuapp.com/public/signin", 
+    {method: "POST",
     body: loginInformation,
     headers: new Headers ({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
     })
     })
-    .then(res => res.json())
+    .then(res=>res.text())
     .then(res => setLoginToLocalStorage(res)))
 }
 
@@ -24,5 +24,5 @@ export let createNewUserInDatabase = (loginInformation) => {
         'Content-Type': 'application/json'
     })
     })
-    .then(res => res.json()))
+    .then(res => res.text()))
 }

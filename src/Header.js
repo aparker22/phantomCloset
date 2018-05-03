@@ -10,8 +10,8 @@ let mapStateToProps = (state) => {
     return {setList: state.setList, isUserLoggedIn: state.isUserLoggedIn}
 };
 
-let mapDispatchToProps = (dispatch, props) => {
-    return {dispatch: dispatch, history: props.history}
+let mapDispatchToProps = (dispatch) => {
+    return {dispatch: dispatch}
   };
 
 class Header extends Component {

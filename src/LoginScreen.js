@@ -25,7 +25,9 @@ let submitUserLoginInformation = (event, dispatch, history) => {
 
 let LoginScreenDumb = ({ dispatch, jwt, history }) =>
     <div className="login-page">
-            <form className="login-form" onSubmit={submitUserLoginInformation}>
+            <form className="login-form" onSubmit={(event) => {
+        submitUserLoginInformation(event, dispatch, history);
+    }}>
             <input type="text" name="username" placeholder="username"/>
             <input type="password" name="password" placeholder="password"/>
             <button type="submit">login</button>
