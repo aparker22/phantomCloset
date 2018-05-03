@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
-import {fetchSetList} from './helperFunctions/headerFetchRequests';
-import {updateSetList} from './actions';
+import {fetchSetList, fetchCardList} from './helperFunctions/headerFetchRequests';
+import {updateSetList, updateCardList} from './actions';
 
 let mapStateToProps = (state) => {
     return {setList: state.setList, isUserLoggedIn: state.isUserLoggedIn}
@@ -23,6 +23,8 @@ class Header extends Component {
     componentDidMount() {
         fetchSetList()
         .then(res => this.props.dispatch(updateSetList(res)))
+        fetchCardList()
+        .then(res=>this.props.dispatch(updateCardList(res)))
     }
     
     render(){
