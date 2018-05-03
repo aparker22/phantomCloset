@@ -34,8 +34,8 @@ updateSetList.toString = () => UPDATE_SET_LIST;
 const ADD_TO_QUEUE = 'ADD_TO_QUEUE'
 export let addToQueue = (payload) => ({ type: ADD_TO_QUEUE, payload });
 let addToQueueAction = (state, action) => {
-    let newQueue = state.cart.concat([action.payload]);
-    ({...state, cardQueue: newQueue});
+    let newQueue = state.cardQueue.concat([action.payload]);
+    return ({...state, cardQueue: newQueue});
 }
 addToQueueAction.toString = () => ADD_TO_QUEUE;
 

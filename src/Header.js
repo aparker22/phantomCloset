@@ -40,7 +40,7 @@ class Header extends Component {
                 checkLocalStorageForUserObject(this.props.dispatch)))
       
         fetchCardList()
-        .then(res=>this.props.dispatch(updateCardList(res)))
+        .then(res => this.props.dispatch(updateCardList(res)))
     }
     
     render(){
