@@ -14,13 +14,6 @@ let mapStateToProps = (state, {match}) => {
     return {cardList: state.cardList, setName, match};
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return { dispatch: dispatch };
-}
-
-let IndividualSetScreen = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SetScreenDumb);
+let IndividualSetScreen = connect(mapStateToProps)(SetScreenDumb);
 
 export default IndividualSetScreen;
