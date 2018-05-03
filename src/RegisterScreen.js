@@ -18,7 +18,7 @@ let registerNewUser = (event, dispatch, history) => {
     let password = event.target.password.value;
     event.target.reset();
     let JSONLoginInfo = { username, password }
-    createNewUserInDatabase(JSON.stringify(JSONLoginInfo))
+    createNewUserInDatabase(JSONLoginInfo)
     .then(history.push(`/login`))
 };
 
