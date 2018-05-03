@@ -171,17 +171,18 @@ input, button {
   position: absolute;
   top: 61px;
   background-color: black;
-  overflow: hidden;
 }
 
 .setListDropdownMenu li {
   width: 100%;
   padding: 1px;
+  height: 40px;
+  padding: 1em;
   border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }
 
 .setListDropdownMenu li a {
@@ -193,5 +194,3 @@ input, button {
   justify-content: center;
   align-items: center;
 }
-
-
