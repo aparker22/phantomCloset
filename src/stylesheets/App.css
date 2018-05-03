@@ -127,13 +127,13 @@ html, body {
   text-align: left;
 }
 
-
-
 .setCardList {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%;
+  justify-content: flex-start;
 }
 .search {
   width: 30%;
