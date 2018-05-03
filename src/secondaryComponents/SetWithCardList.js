@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 
 let LinkToSet = ({setList}) => {
     return setList.map(set => 
-    <div className="homeScreenSetList" key={set.id}>
-        <Link to={`/set/${set.name}`}>{set.name}</Link>
+    <div className="homeScreenSetList" key={set}>
+        <Link to={`/set/${set}`} key={set}>{set}</Link>
     </div>)
 }
 

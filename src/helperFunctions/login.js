@@ -1,27 +1,28 @@
 let setLoginToLocalStorage = (userInfo) => {
-    let jwt = JSON.stringify(userInfo);
-    localStorage.setItem('jwt', jwt);
+    let userObject = JSON.stringify(userInfo);
+    localStorage.setItem('userObject', userObject);
+    return userInfo;
 }
 
 export let loginWithUserData = (loginInformation) => {
-    return(fetch('localhost:3000/public/signin', 
-    {method: 'POST',
+    return(fetch("https://phantom-closet.herokuapp.com/public/signin", 
+    {method: "POST",
     body: loginInformation,
     headers: new Headers ({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
     })
     })
-    .then(res => res.json())
+    .then(res=>res.text())
     .then(res => setLoginToLocalStorage(res)))
 }
 
 export let createNewUserInDatabase = (loginInformation) => {
-    return(fetch('localhost:3000/public/createaccount', 
+    return(fetch('https://phantom-closet.herokuapp.com/public/createaccount', 
     {method: 'POST',
     body: loginInformation,
     headers: new Headers ({
         'Content-Type': 'application/json'
     })
     })
-    .then(res => res.json()))
+    .then(res => res.text()))
 }

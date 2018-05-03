@@ -17,7 +17,7 @@ let submitUserLoginInformation = (event, dispatch, history) => {
     let username = event.target.username.value;
     let password = event.target.password.value;
     event.target.reset();
-    let JSONLoginInfo = { username, password }
+    let JSONLoginInfo = { password, username }
     loginWithUserData(JSON.stringify(JSONLoginInfo))
     .then(res => dispatch(updateJWT(res)))
     .then(history.push(`/`))
@@ -25,7 +25,9 @@ let submitUserLoginInformation = (event, dispatch, history) => {
 
 let LoginScreenDumb = ({ dispatch, jwt, history }) =>
     <div className="login-page">
-            <form className="login-form" onSubmit={submitUserLoginInformation}>
+            <form className="login-form" onSubmit={(event) => {
+        submitUserLoginInformation(event, dispatch, history);
+    }}>
             <input type="text" name="username" placeholder="username"/>
             <input type="password" name="password" placeholder="password"/>
             <button type="submit">login</button>

@@ -1,23 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
 import SetWithCardList from './secondaryComponents/SetWithCardList';
 import {connect} from 'react-redux';
 
 let mapStateToProps = (state) => {
-    return {setList: state.setList, cardList: state.cardList}
+    return {setList: state.setList}
+};  
+
+let mapDispatchToProps = (dispatch) => {
+  return {dispatch: dispatch}
 };
 
-class HomeScreenComponent extends Component {
-    
-    render(){
-    let {setList} = this.props;
-    return (
+let HomeScreenDumb = ({ dispatch, setList, history }) => 
     <div className="homeScreen">
         <div className="homeScreenTop"></div>
         <SetWithCardList setList={setList} />
     </div>
-    )}
-}
 
-let HomeScreen = connect(mapStateToProps)(HomeScreenComponent)
+
+let HomeScreen = connect(mapStateToProps, mapDispatchToProps)(HomeScreenDumb)
 
 export default HomeScreen;

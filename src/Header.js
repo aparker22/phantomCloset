@@ -3,17 +3,28 @@ import {Link} from 'react-router-dom';
 import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
+import {fetchSetList} from './helperFunctions/headerFetchRequests';
+import {updateSetList} from './actions';
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
     return {setList: state.setList, isUserLoggedIn: state.isUserLoggedIn}
 };
 
+let mapDispatchToProps = (dispatch) => {
+    return {dispatch: dispatch}
+  };
+
 class Header extends Component {
     constructor(props) {
 		super(props);
 		this.state = {active: false};
-	}
+    }
+    
+    componentDidMount() {
+        fetchSetList()
+        .then(res => this.props.dispatch(updateSetList(res)))
+    }
     
     render(){
     let {setList, isUserLoggedIn} = this.props;
@@ -34,7 +45,7 @@ class Header extends Component {
         } else {
             return(
                 <ul className="setListDropdownMenu">{
-                    setList.map(set => <li><LinkToSet set={set} key={set.name}/></li>)
+                    setList.map(set => <li><LinkToSet set={set} key={set}/></li>)
                 }
                 <li onClick={toggleActive}>Close</li></ul>)
         }
@@ -63,6 +74,6 @@ class Header extends Component {
     }
 }
 
-let HeaderComponent = connect(mapStateToProps)(Header)
+let HeaderComponent = connect(mapStateToProps, mapDispatchToProps)(Header)
 
 export default HeaderComponent;

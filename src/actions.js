@@ -17,8 +17,16 @@ let updateJWTAction = (state, action) => {
 }
 updateJWT.toString = () => UPDATE_JWT;
 
+const UPDATE_SET_LIST = "UPDATE_SET_LIST";
+export let updateSetList = (listFromServer) => ({type: UPDATE_SET_LIST, payload: listFromServer});
+let updateSetListAction = (state, action) => {
+    return ({...state, setList: action.payload});
+}
+updateSetList.toString = () => UPDATE_SET_LIST;
+
 let reducers = {
     [updateJWT]: updateJWTAction,
+    [updateSetList]: updateSetListAction,
     [updateSearchAction]: updateSearchAction,
     [updateSearchResultsAction]: updateSearchResultsAction
 }
