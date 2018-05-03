@@ -24,11 +24,20 @@ let updateSetListAction = (state, action) => {
 }
 updateSetList.toString = () => UPDATE_SET_LIST;
 
+const ADD_TO_QUEUE = 'ADD_TO_QUEUE'
+export let addToQueue = (payload) => ({ type: ADD_TO_QUEUE, payload });
+let addToQueueAction = (state, action) => {
+    let newQueue = state.cart.concat([action.payload]);
+    ({...state, cardQueue: newQueue});
+}
+addToQueueAction.toString = () => ADD_TO_QUEUE;
+
 let reducers = {
     [updateJWT]: updateJWTAction,
     [updateSetList]: updateSetListAction,
     [updateSearchAction]: updateSearchAction,
-    [updateSearchResultsAction]: updateSearchResultsAction
+    [updateSearchResultsAction]: updateSearchResultsAction,
+    [addToQueueAction]: addToQueueAction
 }
 
 export default reducers;

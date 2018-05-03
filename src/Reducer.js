@@ -1,7 +1,6 @@
 import sets from './json/sets.json';
 import reducers from './actions';
 
-
 const initialState = {
     setList: sets, 
     userObject: {},
@@ -9,6 +8,15 @@ const initialState = {
     searchInput: '',
     searchAutocomplete: [],
     cardQueue: []
+}
+
+let checkLocalStorageForUserObject = () => {
+    let userObject = localStorage.getItem('userObject');
+    if (userObject) {
+        return userObject;
+    } else {
+        return {};
+    }
 }
 
 let fallbackReducer = state => state; 

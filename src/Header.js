@@ -4,7 +4,7 @@ import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
 import {fetchSetList} from './helperFunctions/headerFetchRequests';
-import {updateSetList} from './actions';
+import {updateSetList, updateUserObject} from './actions';
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
@@ -15,6 +15,15 @@ let mapDispatchToProps = (dispatch) => {
     return {dispatch: dispatch}
   };
 
+
+let checkLocalStorageForUserObject = () => {
+    let userObject = localStorage.getItem('userObject');
+    if (userObject) {
+        return userObject;
+    } else {
+        return {};
+    }
+}
 class Header extends Component {
     constructor(props) {
 		super(props);
@@ -24,6 +33,7 @@ class Header extends Component {
     componentDidMount() {
         fetchSetList()
         .then(res => this.props.dispatch(updateSetList(res)))
+        this.props.dispatch(updateUserObject(checkLocalStorageForUserObject()))
     }
     
     render(){
