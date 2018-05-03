@@ -4,7 +4,6 @@ import './cardDetail.css';
 
 
 // assume card object is passed down as props
-
 let CardDetail = ({card}) => {
     return (
         <div className="card-container">
@@ -31,3 +30,4 @@ let CardDetail = ({card}) => {
 // export default connect(mapStateToProps, mapDispatchToProps)(CardDetail);
 
 export default CardDetail;
+
