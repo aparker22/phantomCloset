@@ -16,6 +16,7 @@ html, body {
 .header {
   width: 100%;
   height: 60px;
+  position: absolute;
   top: 0;
   display: flex;
   flex-direction: row;
@@ -23,6 +24,10 @@ html, body {
   align-items: center;
   color: white; 
   flex-shrink: inherit;
+}
+
+.header:hover {
+  background-color: black;
 }
 
 .headerList {
@@ -68,7 +73,7 @@ html, body {
 .footer {
   width: 100%;
   height: 10%;
-  position: absolute;
+  position: relative;
   bottom: 0;
   display: flex;
   flex-direction: row;
@@ -79,12 +84,28 @@ html, body {
 
 .homeScreenTop {
   width: 100%;
-  height: 200px;
+  height: 400px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.356), rgba(0, 0, 0, 0.356)), 
-  url('https://icdn2.digitaltrends.com/image/magic-the-gathering-2-720x720.jpg?ver=1.jpg');
-  background-size: stretch;
+  url('https://i.pinimg.com/originals/d7/c6/1d/d7c61dea46010933a89765a7fef60951.jpg');
+  background-position:center;
+  background-repeat: no-repeat;
 }
 
+.homeScreenSetList {
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.setCardList {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .search {
   width: 30%;
   height: 100%;
@@ -148,6 +169,7 @@ input, button {
 
 .setListDropdownMenu li {
   width: 100%;
+  padding: 1px;
   height: 40px;
   padding: 1em;
   border-top: 1px solid lightgray;

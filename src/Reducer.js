@@ -1,9 +1,9 @@
 import sets from './json/sets.json';
 import reducers from './actions';
 
-
 const initialState = {
-    setList: sets, 
+    setList: [], 
+    cardList: [],
     userObject: {},
     isUserLoggedIn: false,
     searchInput: '',
