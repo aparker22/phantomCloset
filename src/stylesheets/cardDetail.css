@@ -7,6 +7,12 @@
     border-radius: 3px;
     box-shadow: .2em .2em .5em #333;
     transition: all 1s;
+    display: flex;
+}
+
+.card a {
+    height: 100%;
+    width: 100%;
 }
 
 .card img {
@@ -15,17 +21,8 @@
     object-fit: contain;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    height: 150px;
-    width: 100px;
-    border: 1px solid #1a57ba;
-    box-shadow: .3em .3em .6em #528ff2;
-}
-
-.card:active {
+/* .card:hover{
+    position: fixed;
     z-index: 1;
-    top: 50%;
-    left: 50%;
     transform: scale(2.5) translate(50%, -50%);
-}
+}  */

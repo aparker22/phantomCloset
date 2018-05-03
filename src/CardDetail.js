@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './cardDetail.css';
+import {Link} from 'react-router-dom';
 
 
 // assume card object is passed down as props
@@ -9,7 +9,7 @@ let CardDetail = ({card}) => {
     return (
         <div className="card-container">
             <div className="card">
-                <img src={card.imageurl} alt={card.name} />
+            <Link to={`/card/${card.name}`} key={card.cardid}><img src={card.imageurl} alt={card.name} /></Link>
                 {/* <button onClick={() => addCardToQueue(card)}>Add Card</button> */}
             </div>
         </div>

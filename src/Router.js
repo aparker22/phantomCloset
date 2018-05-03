@@ -16,6 +16,7 @@ let Router = () =>
     <HashRouter>
         <div className="container">
             <HeaderComponent />
+            <div className="differentScreens">
             <Route path="/" exact component={HomeScreen} />
             <Route path = "/profile" component={ProfileScreen} />
             <Route path = "/set" exact component={SetScreen} />
@@ -23,6 +24,7 @@ let Router = () =>
             <Route path = "/card/:card" component={CardScreen} />
             <Route path = "/login" component={LoginScreen} />
             <Route path = "/register" component={RegisterScreen} />
+            </div>
             <Footer />
         </div>
     </HashRouter>

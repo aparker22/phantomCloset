@@ -12,8 +12,9 @@ let mapDispatchToProps = (dispatch) => {
 
 let HomeScreenDumb = ({ dispatch, setList, cardList, history }) => 
     <div className="homeScreen">
-        <div className="homeScreenTop"></div>
-        <SetWithCardList setList={setList} cardList={cardList} />
+        <div className="homeScreenTop"></div>{
+            setList.map( set => <SetWithCardList set={set} cardList={cardList} />)
+        }
     </div>
 
 
