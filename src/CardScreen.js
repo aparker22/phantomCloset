@@ -4,16 +4,20 @@ import CardDetail from './CardDetail';
 import LinkToSet from './secondaryComponents/LinkToSet';
 
 let CardScreenDumb = ({ currentCard }) => {
-    return <div className="cardScreen">
-        <CardDetail card={currentCard} />
-        <div className="cardInformationDiv">
-            <h2>{currentCard.name}</h2>
-            <h5><LinkToSet set={currentCard.setname} /></h5>
-            <h5>Card Type: {currentCard.type}</h5>
-            <h5>Casting Cost: {currentCard.cmc}</h5>
-            <h5>Text: {currentCard.text}</h5>
-            <h5>Rarity: {currentCard.rarity}</h5>
-        </div>
+    return <div>{
+        currentCard.map(card =>
+            <div className="cardScreen">
+                <CardDetail card={card} />
+                <div className="cardInformationDiv">
+                    <h2>{card.name}</h2>
+                    <h5><LinkToSet set={card.setname} /></h5>
+                    <h5>Card Type: {card.type}</h5>
+                    <h5>Casting Cost: {card.cmc}</h5>
+                    <h5>Text: {card.text}</h5>
+                    <h5>Rarity: {card.rarity}</h5>
+                </div>
+            </div>
+        )}
     </div>
 }
 

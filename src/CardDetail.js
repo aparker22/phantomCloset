@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToQueue, updateCurrentCard } from './actions';
-import { postCardToQueue } from './fetch-data';
+import { postCardToQueue, getCurrentCard} from './fetch-data';
 import { Link } from 'react-router-dom';
 
 // assume card object is passed down as props
@@ -25,7 +25,11 @@ let CardDetail = ({card, updateCurrentCard, addToQueue, userObject, cardQueue, i
         <div className="card-container">
             <div className="card">
                 <Link to={`/card/${card.name}`} key={card.cardid}>
-                        <img onClick={() => updateCurrentCard(card)} src={card.imageurl} alt={card.name} />
+                        <img onClick={() => 
+                            getCurrentCard(card.name)
+                            .then(data => updateCurrentCard(data)
+                        )} 
+                            src={card.imageurl} alt={card.name} />
                 </Link>
             </div>
             {

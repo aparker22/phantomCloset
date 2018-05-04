@@ -83,13 +83,15 @@ class Header extends Component {
 
     let LoginOrProfileOption = () => {
         if (isUserLoggedIn === true ) {
-            return  <div><li><Link to='/profile'>{ this.props.userObject.username }</Link></li> 
+            return  <ul className="headerList"><li><Link to='/profile'>{ this.props.userObject.username }</Link></li> 
                 <li onClick={() => {
                 localStorage.removeItem('userObject');
                 this.props.dispatch(logoutUser())}}>Logout</li>
-                </div>
+                </ul>
         } else {
-            return <li><Link to='/login'>Login</Link> / <Link to='/register'>Create Account</Link></li>
+            return <ul className="headerList">
+                    <li><Link to='/login'>Login</Link> / <Link to='/register'>Create Account</Link></li>
+                    </ul>
         }
     }
 
@@ -107,9 +109,7 @@ class Header extends Component {
             <MenuFunction />
         }</div>
             <SearchBar />
-        <ul className="headerList">
             <LoginOrProfileOption />
-        </ul>
     </div>
     }
 }

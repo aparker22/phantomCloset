@@ -8,7 +8,7 @@ const initialState = {
     searchInput: '',
     searchAutocomplete: [],
     cardQueue: [],
-    currentCard: {}
+    currentCard: []
 }
 
 let fallbackReducer = state => state; 
