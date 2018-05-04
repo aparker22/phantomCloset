@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 import CardDetail from './CardDetail';
-import LinkToSet from './secondaryComponents/LinkToSet';
 import { fetchCurrentSet } from './helperFunctions/headerFetchRequests';
 import { updateCardList } from './actions';
 
@@ -15,7 +15,7 @@ let CardScreenDumb = ({ currentCard, updateSetList }) => {
                     <h5 onClick= {
                         () => fetchCurrentSet(card.setname)
                                 .then(setList => updateCardList(setList))
-                    }><LinkToSet set={card.setname} /></h5>
+                    }><Link to={'/set/' + card.setname}>{card.setname}</Link></h5>
                     <h5>Card Type: {card.type}</h5>
                     <h5>Casting Cost: {card.cmc}</h5>
                     <h5>Text: {card.text}</h5>

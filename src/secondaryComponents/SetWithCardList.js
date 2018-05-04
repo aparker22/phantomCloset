@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import CardDetail from '../CardDetail';
 
@@ -12,5 +13,15 @@ let LinkToSet = ({set, cardList}) => {
     </div>
 }
 
+let mapStateToProps = (state, {set}) => {
+    return {
+        cardList: state.cardList,
+        set
+    };
+};
 
-export default LinkToSet;
+let mapDispatchToProps = (dispatch) =>{
+    return {dispatch: dispatch}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LinkToSet);
