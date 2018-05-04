@@ -4,7 +4,7 @@ import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
 import {fetchSetList, fetchCardList} from './helperFunctions/headerFetchRequests';
-import {updateSetList, updateCardList} from './actions';
+import {updateSetList, updateCardList, logoutUser} from './actions';
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
@@ -24,8 +24,8 @@ class Header extends Component {
     componentDidMount() {
         fetchSetList()
         .then(res => this.props.dispatch(updateSetList(res)))
-        fetchCardList()
-        .then(res=>this.props.dispatch(updateCardList(res)))
+        //fetchCardList()
+        //.then(res=>this.props.dispatch(updateCardList(res)))
     }
     
     render(){
@@ -55,7 +55,11 @@ class Header extends Component {
 
     let LoginOrProfileOption = () => {
         if (isUserLoggedIn === true ) {
-            return <li><Link to='/profile'>Profile</Link></li>  
+            return  <div><li><Link to='/profile'>Profile</Link></li> 
+                <li onClick={() => {
+                localStorage.removeItem('userObject');
+                this.props.dispatch(logoutUser())}}>Logout</li>
+                </div>
         } else {
             return <li><Link to='/login'>Login</Link> / <Link to='/register'>Create Account</Link></li>
         }
