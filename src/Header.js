@@ -4,7 +4,9 @@ import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
 import {fetchSetList, fetchCardList} from './helperFunctions/headerFetchRequests';
-import {updateSetList, updateCardList, logoutUser} from './actions';
+
+import {updateSetList, updateCardList, updateUserObject, updateIsUserLoggedIn, logoutUser} from './actions';
+
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
@@ -15,6 +17,16 @@ let mapDispatchToProps = (dispatch) => {
     return {dispatch: dispatch}
   };
 
+
+let checkLocalStorageForUserObject = (dispatch) => {
+    let userObject = localStorage.getItem('userObject');
+    if (userObject) {
+        dispatch(updateIsUserLoggedIn());
+        return userObject;
+    } else {
+        return {};
+    }
+}
 class Header extends Component {
     constructor(props) {
 		super(props);
@@ -24,8 +36,14 @@ class Header extends Component {
     componentDidMount() {
         fetchSetList()
         .then(res => this.props.dispatch(updateSetList(res)))
-        //fetchCardList()
-        //.then(res=>this.props.dispatch(updateCardList(res)))
+      
+        this.props.dispatch(
+            updateUserObject(
+                checkLocalStorageForUserObject(this.props.dispatch)))
+      
+        fetchCardList()
+        .then(res => this.props.dispatch(updateCardList(res)))
+
     }
     
     render(){

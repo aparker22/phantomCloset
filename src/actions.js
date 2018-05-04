@@ -38,6 +38,14 @@ let updateSetListAction = (state, action) => {
 }
 updateSetList.toString = () => UPDATE_SET_LIST;
 
+const ADD_TO_QUEUE = 'ADD_TO_QUEUE'
+export let addToQueue = (payload) => ({ type: ADD_TO_QUEUE, payload });
+let addToQueueAction = (state, action) => {
+    let newQueue = state.cardQueue.concat([action.payload]);
+    return ({...state, cardQueue: newQueue});
+}
+addToQueueAction.toString = () => ADD_TO_QUEUE;
+
 const UPDATE_CARD_LIST = "UPDATE_CARD_LIST";
 export let updateCardList = (listFromServer) => ({type: UPDATE_CARD_LIST, payload: listFromServer});
 let updateCardListAction = (state, action) => {
@@ -52,6 +60,7 @@ let reducers = {
     [updateCardList]: updateCardListAction,
     [updateSearchAction]: updateSearchAction,
     [updateSearchResultsAction]: updateSearchResultsAction,
+    [addToQueueAction]: addToQueueAction,
     [logoutUserAction]: logoutUserAction
 }
 

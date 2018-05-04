@@ -22,7 +22,7 @@ let SearchBarDumb = ({ dispatch, searchInput, searchAutocomplete }) =>
         <ul className="setListDropdownMenu">
             {
                 searchAutocomplete.map(result =>
-                    <li>{result}</li>
+                    <Link to={'/cards/' + result}>{result}</Link>
                 )
             }
         </ul>
