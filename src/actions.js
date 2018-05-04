@@ -12,6 +12,13 @@ let updateIsUserLoggedInAction = (state, action) => {
   }
 updateIsUserLoggedIn.toString = () => UPDATE_IS_USER_LOGGED_IN;
 
+const LOGOUT_USER = "LOGOUT_USER";
+export let logoutUser = () => ({type: LOGOUT_USER});
+let logoutUserAction = (state, action) => {
+    return ({...state, isUserLoggedIn: false});
+}
+logoutUserAction.toString = () => LOGOUT_USER;
+
 const UPDATE_SEARCH = 'UPDATE_SEARCH'
 export let updateSearch = (payload) => ({ type: UPDATE_SEARCH, payload });
 let updateSearchAction = (state, action) =>
@@ -61,7 +68,8 @@ let reducers = {
     [updateSearchAction]: updateSearchAction,
     [updateSearchResultsAction]: updateSearchResultsAction,
     [addToQueueAction]: addToQueueAction,
-    [updateCurrentCardAction]: updateCurrentCardAction
+    [updateCurrentCardAction]: updateCurrentCardAction,
+    [logoutUserAction]: logoutUserAction
 }
 
 export default reducers;
