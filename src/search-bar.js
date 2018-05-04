@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateSearch, updateSearchResults } from './actions';
 import { getAutocomplete } from './fetch-data';
 
 let SearchBarDumb = ({ dispatch, searchInput, searchAutocomplete }) =>
-    <div>
+    <div className="search-bar-div">
         <input name="search-box" type="text" className="searchTerm" placeholder="What are you looking for?"
             value={searchInput} onChange={(event) => {
                 dispatch(updateSearch(event.target.value));
