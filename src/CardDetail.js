@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToQueue, updateCurrentCard } from './actions';
+import LinkToSet from './secondaryComponents/LinkToSet';
 import { postCardToQueue, getCurrentCard} from './fetch-data';
 import { Link } from 'react-router-dom';
 
