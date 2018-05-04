@@ -1,6 +1,5 @@
 let setLoginToLocalStorage = (userInfo) => {
-    let userObject = JSON.stringify(userInfo);
-    localStorage.setItem('userObject', userObject);
+    localStorage.setItem('userObject', userInfo);
     return userInfo;
 }
 
