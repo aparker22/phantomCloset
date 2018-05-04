@@ -5,7 +5,7 @@ export let fetchSetList = () => {
 }
 
 export let fetchCardList = () => {
-    return(fetch("http://localhost:5000/public/cards", 
+    return(fetch("http://localhost:5000/public/standard", 
     {method: "GET"})
     .then(res => res.json()))
 }
