@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import './cardDetail.css';
 import { addToQueue } from './actions';
 import { postCardToQueue } from './fetch-data';
 import { Link } from 'react-router-dom';
