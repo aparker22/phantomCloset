@@ -8,7 +8,7 @@ import { updateCardList } from './actions';
 let CardScreenDumb = ({ currentCard, updateSetList }) => {
     return <div>{
         currentCard.map(card =>
-            <div key={card.name} className="cardScreen">
+            <div className="cardScreen">
                 <CardDetail card={card} />
                 <div className="cardInformationDiv">
                     <h2>{card.name}</h2>
