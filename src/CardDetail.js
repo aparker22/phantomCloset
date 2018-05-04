@@ -23,13 +23,12 @@ let buttonLogic = (userObject, card, cardQueue, addToQueue, isUserLoggedIn) => {
 let CardDetail = ({card, updateCurrentCard, addToQueue, userObject, cardQueue, isUserLoggedIn}) => {
     return (
         <div className="card-container">
-            <div className="card">
+            <div className="card" >
                 <Link to={`/card/${card.name}`} key={card.cardid}>
                         <img onClick={() => 
                             getCurrentCard(card.name)
                             .then(data => updateCurrentCard(data)
-                        )} 
-                            src={card.imageurl} alt={card.name} />
+                        )}src={card.imageurl} alt={card.name} />
                 </Link>
             </div>
             {
