@@ -11,6 +11,6 @@ export let fetchCardList = () => {
 }
 
 export let fetchCurrentSet = (set) => 
-    fetch(`https://phantom-closet.herokuapp.com/sets/${set}`, {
+    fetch(`https://phantom-closet.herokuapp.com/public/sets/${set}`, {
         method: "GET",
     }).then(res => res.json())
