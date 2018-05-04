@@ -24,6 +24,7 @@ let Router = () =>
             <Route path = "/card/:card" component={CardScreen} />
             <Route path = "/login" component={LoginScreen} />
             <Route path = "/register" component={RegisterScreen} />
+            <Route path = "/logout" component={HomeScreen} />
             </div>
             <Footer />
         </div>
