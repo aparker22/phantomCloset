@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateSearch, updateSearchResults } from './actions';
-import { getAutocomplete } from './fetch-data';
+import { updateSearch, updateSearchResults, updateCurrentCard } from './actions';
+import { getAutocomplete, getCurrentCard } from './fetch-data';
 
 let SearchBarDumb = ({ dispatch, searchInput, searchAutocomplete }) =>
     <div className="search-bar-div">
@@ -22,7 +22,12 @@ let SearchBarDumb = ({ dispatch, searchInput, searchAutocomplete }) =>
         <ul className="setListDropdownMenu">
             {
                 searchAutocomplete.map(result =>
-                    <Link to={'/cards/' + result}>{result}</Link>
+                    <Link onClick={() => {
+                        getCurrentCard(result)
+                        .then(card => dispatch(updateCurrentCard(card[0])));
+                        dispatch(updateSearchResults([]));
+                    }} 
+                        to={'/card/' + result}>{result}</Link>
                 )
             }
         </ul>

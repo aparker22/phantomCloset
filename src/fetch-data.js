@@ -1,7 +1,7 @@
 export let getAutocomplete = (input) => 
     fetch(`http://localhost:5000/public/autocomplete/${input}`)
       .then(json => json.json()
-    )
+    );
 
 export let postCardToQueue = (input, token) =>
     fetch(`http://localhost:5000/private/addtoqueue`,
@@ -13,4 +13,8 @@ export let postCardToQueue = (input, token) =>
               "authorization": token
               })
       })
-    .then(res=>res.json())
+    .then(res=>res.json());
+  
+export let getCurrentCard = (card) =>
+      fetch(`http://localhost:5000/public/cards/${card}`)
+        .then(res => res.json());

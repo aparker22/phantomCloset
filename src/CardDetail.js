@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToQueue } from './actions';
+import { addToQueue, updateCurrentCard } from './actions';
 import { postCardToQueue } from './fetch-data';
 import { Link } from 'react-router-dom';
-
 
 // assume card object is passed down as props
 let buttonLogic = (userObject, card, cardQueue, addToQueue, isUserLoggedIn) => {
@@ -21,12 +20,13 @@ let buttonLogic = (userObject, card, cardQueue, addToQueue, isUserLoggedIn) => {
     )}
 }
 // assume card object is passed down as props
-let CardDetail = ({card, addToQueue, userObject, cardQueue, isUserLoggedIn}) => {
+let CardDetail = ({card, updateCurrentCard, addToQueue, userObject, cardQueue, isUserLoggedIn}) => {
     return (
         <div className="card-container">
             <div className="card">
-            <Link to={`/card/${card.name}`} key={card.cardid}><img src={card.imageurl} alt={card.name} /></Link>
-
+                <Link to={`/card/${card.name}`} key={card.cardid}>
+                        <img onClick={() => updateCurrentCard(card)} src={card.imageurl} alt={card.name} />
+                </Link>
             </div>
             {
                 buttonLogic(userObject, card, cardQueue, addToQueue, isUserLoggedIn)
@@ -38,6 +38,7 @@ let CardDetail = ({card, addToQueue, userObject, cardQueue, isUserLoggedIn}) => 
 let mapStateToProps = (state, { card }) => {
     return {
         card,
+        currentCard: state.currentCard,
         userObject: state.userObject,
         cardQueue: state.cardQueue,
         isUserLoggedIn: state.isUserLoggedIn
@@ -47,7 +48,8 @@ let mapStateToProps = (state, { card }) => {
 
 let mapDispatchToProps = (dispatch) => {
    return {
-    addToQueue: (card) => dispatch(addToQueue(card))
+    addToQueue: (card) => dispatch(addToQueue(card)),
+    updateCurrentCard: (card) => dispatch(updateCurrentCard(card))
    };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CardDetail);
