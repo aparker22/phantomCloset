@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import LinkToSet from './secondaryComponents/SetWithCardList';
 
 let SetScreenDumb = ({setName, cardList}) => {
-    return <div>
+    return <div className>
         <LinkToSet set={setName} cardList={cardList} />
     </div>
 }

@@ -27,6 +27,7 @@ let CardDetail = ({card, addToQueue, userObject, cardQueue, isUserLoggedIn}) => 
         <div className="card-container">
             <div className="card">
             <Link to={`/card/${card.name}`} key={card.cardid}><img src={card.imageurl} alt={card.name} /></Link>
+
             </div>
             {
                 buttonLogic(userObject, card, cardQueue, addToQueue, isUserLoggedIn)
