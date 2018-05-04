@@ -61,7 +61,9 @@ class Header extends Component {
             return <div className="setListStatic">Browse by Set</div>
         } else {
             return(
-                <ul className="setListDropdownMenu">{
+                <ul className="setListDropdownMenu">
+                <li>Browse by Set</li>
+                {
                     setList.map(set => <li><LinkToSet set={set} key={set}/></li>)
                 }
                 <li onClick={toggleActive}>Close</li></ul>)

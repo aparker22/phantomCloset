@@ -6,13 +6,9 @@ let LinkToSet = ({set, cardList}) => {
     return <div className="setList" key={set}>
         <Link to={`/set/${set}`} key={set}>{set}</Link>
         <div className="setCardList">{
-            cardList.map((card) => {
-                if (card.setname === set) {
-                    return <CardDetail card={card} />
-                } else {
-                    return null
-                }
-            })
+            cardList.filter(card => card.setname === set).splice(0, 8)
+                .map((card) => <CardDetail card={card} />
+                )
         }</div>
     </div>
 }
