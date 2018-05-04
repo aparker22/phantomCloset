@@ -3,8 +3,13 @@ import {Link} from 'react-router-dom';
 import logo from './images/logo.png'
 import LinkToSet from './secondaryComponents/LinkToSet';
 import {connect} from 'react-redux';
-import {fetchSetList, fetchCardList} from './helperFunctions/headerFetchRequests';
-import {updateSetList, updateCardList, updateUserObject, updateIsUserLoggedIn} from './actions';
+import {fetchSetList, 
+        fetchCardList,
+        fetchCurrentSet} from './helperFunctions/headerFetchRequests';
+import {updateSetList,
+        updateCardList, 
+        updateUserObject, 
+        updateIsUserLoggedIn} from './actions';
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
@@ -62,9 +67,11 @@ class Header extends Component {
         } else {
             return(
                 <ul className="setListDropdownMenu">
-                <li>Browse by Set</li>
                 {
-                    setList.map(set => <li><LinkToSet set={set} key={set}/></li>)
+                    setList.map(set => <li onClick={
+                        () => fetchCurrentSet(set)
+                                .then(res => this.props.dispatch(updateCardList(res)))
+                    }><LinkToSet set={set} key={set}/></li>)
                 }
                 <li onClick={toggleActive}>Close</li></ul>)
         }
@@ -80,7 +87,13 @@ class Header extends Component {
 
     return <div className="header">
         <ul className="headerList">
-            <li><Link to='/'><img src={logo} className="headerLogo" alt="logo"/></Link></li>
+            <li onClick={() => 
+                    fetchCardList()
+                    .then(res => this.props.dispatch(updateCardList(res)))
+                    }>
+                <Link to='/'><img src={logo} className="headerLogo" alt="logo"/>
+                </Link>
+            </li>
         </ul>
         <div className="setListDropdown" onClick={toggleActive}>{
             <MenuFunction />
