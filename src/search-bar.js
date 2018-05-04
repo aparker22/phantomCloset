@@ -24,7 +24,7 @@ let SearchBarDumb = ({ dispatch, searchInput, searchAutocomplete }) =>
                 searchAutocomplete.map(result =>
                     <Link onClick={() => {
                         getCurrentCard(result)
-                        .then(card => dispatch(updateCurrentCard(card[0])));
+                        .then(card => dispatch(updateCurrentCard(card)));
                         dispatch(updateSearchResults([]));
                     }} 
                         to={'/card/' + result}>{result}</Link>

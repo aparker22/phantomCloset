@@ -3,7 +3,8 @@ import SetWithCardList from './secondaryComponents/SetWithCardList';
 import {connect} from 'react-redux';
 
 let mapStateToProps = (state) => {
-    return {setList: state.setList, cardList: state.cardList}
+    return {setList: state.setList, 
+            cardList: state.cardList}
 };  
 
 let SetScreenDumb = ({setList, cardList}) => 

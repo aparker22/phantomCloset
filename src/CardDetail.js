@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToQueue, updateCurrentCard } from './actions';
-import { postCardToQueue } from './fetch-data';
+import LinkToSet from './secondaryComponents/LinkToSet';
+import { postCardToQueue, getCurrentCard} from './fetch-data';
 import { Link } from 'react-router-dom';
 
 // assume card object is passed down as props
@@ -9,13 +10,13 @@ let buttonLogic = (userObject, card, cardQueue, addToQueue, isUserLoggedIn) => {
     if (isUserLoggedIn) {
         return(
             <button onClick={
-                () =>
+                () => {
                 postCardToQueue({
                     cardId: card.cardid,
                     userId: userObject.id,
                     position: cardQueue.length
-                }, userObject.token).then(addToQueue({ card }))
-            } > Add Card to Queue
+                }, userObject.token).then(addToQueue(card))
+            }} > Add Card to Queue
             </button>
     )}
 }
@@ -23,9 +24,12 @@ let buttonLogic = (userObject, card, cardQueue, addToQueue, isUserLoggedIn) => {
 let CardDetail = ({card, updateCurrentCard, addToQueue, userObject, cardQueue, isUserLoggedIn}) => {
     return (
         <div className="card-container">
-            <div className="card">
+            <div className="card" >
                 <Link to={`/card/${card.name}`} key={card.cardid}>
-                        <img onClick={() => updateCurrentCard(card)} src={card.imageurl} alt={card.name} />
+                        <img onClick={() => 
+                            getCurrentCard(card.name)
+                            .then(data => updateCurrentCard(data)
+                        )}src={card.imageurl} alt={card.name} />
                 </Link>
             </div>
             {

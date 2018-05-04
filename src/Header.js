@@ -6,15 +6,20 @@ import {connect} from 'react-redux';
 import {fetchSetList, 
         fetchCardList,
         fetchCurrentSet} from './helperFunctions/headerFetchRequests';
+import { fetchUserQueue } from './fetch-data';
 import {updateSetList,
         updateCardList, 
         updateUserObject, 
         updateIsUserLoggedIn,
-        logoutUser} from './actions';
+        logoutUser,
+        updateQueue
+    } from './actions';
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
-    return {setList: state.setList, isUserLoggedIn: state.isUserLoggedIn}
+    return {setList: state.setList, 
+            isUserLoggedIn: state.isUserLoggedIn,
+            userObject: state.userObject}
 };
 
 let mapDispatchToProps = (dispatch) => {
@@ -26,7 +31,7 @@ let checkLocalStorageForUserObject = (dispatch) => {
     let userObject = localStorage.getItem('userObject');
     if (userObject) {
         dispatch(updateIsUserLoggedIn());
-        return userObject;
+        return JSON.parse(userObject);
     } else {
         return {};
     }
@@ -51,7 +56,7 @@ class Header extends Component {
     }
     
     render(){
-    let {setList, isUserLoggedIn} = this.props;
+    let {setList, isUserLoggedIn, userObject} = this.props;
     let {active} = this.state;
 
     let toggleActive = (e) => {
@@ -81,13 +86,18 @@ class Header extends Component {
 
     let LoginOrProfileOption = () => {
         if (isUserLoggedIn === true ) {
-            return  <div><li><Link to='/profile'>Profile</Link></li> 
+            return  <ul className="headerList"><li onClick={
+                () => fetchUserQueue(this.props.userObject.token)
+                        .then(res => this.props.dispatch(updateQueue(res)))
+            }><Link to='/profile'>{ this.props.userObject.username }</Link></li> 
                 <li onClick={() => {
                 localStorage.removeItem('userObject');
                 this.props.dispatch(logoutUser())}}>Logout</li>
-                </div>
+                </ul>
         } else {
-            return <li><Link to='/login'>Login</Link> / <Link to='/register'>Create Account</Link></li>
+            return <ul className="headerList">
+                    <li><Link to='/login'>Login</Link> / <Link to='/register'>Create Account</Link></li>
+                    </ul>
         }
     }
 
@@ -105,9 +115,7 @@ class Header extends Component {
             <MenuFunction />
         }</div>
             <SearchBar />
-        <ul className="headerList">
             <LoginOrProfileOption />
-        </ul>
     </div>
     }
 }

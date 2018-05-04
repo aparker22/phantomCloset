@@ -1,16 +1,16 @@
 export let fetchSetList = () => {
-    return (fetch("http://localhost:5000/public/sets", 
+    return (fetch("https://phantom-closet.herokuapp.com/public/sets", 
     {method: "GET"})
     .then(res => res.json()))
 }
 
 export let fetchCardList = () => {
-    return(fetch("http://localhost:5000/public/standard", 
+    return(fetch("https://phantom-closet.herokuapp.com/public/standard", 
     {method: "GET"})
     .then(res => res.json()))
 }
 
 export let fetchCurrentSet = (set) => 
-    fetch(`http://localhost:5000/public/sets/${set}`, {
+    fetch(`https://phantom-closet.herokuapp.com/sets/${set}`, {
         method: "GET",
     }).then(res => res.json())
