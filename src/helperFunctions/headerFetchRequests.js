@@ -9,3 +9,8 @@ export let fetchCardList = () => {
     {method: "GET"})
     .then(res => res.json()))
 }
+
+export let fetchCurrentSet = (set) => 
+    fetch(`http://localhost:5000/public/sets/${set}`, {
+        method: "GET",
+    }).then(res => res.json())

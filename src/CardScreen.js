@@ -3,26 +3,26 @@ import {connect} from 'react-redux';
 import CardDetail from './CardDetail';
 import LinkToSet from './secondaryComponents/LinkToSet';
 
-let CardScreenDumb = (cardToDisplay) => {
+let CardScreenDumb = ({ currentCard }) => {
     return <div className="cardScreen">
-        <CardDetail card={cardToDisplay} />
+        <CardDetail card={currentCard} />
         <div className="cardInformationDiv">
-            <h2>{cardToDisplay.name}</h2>
-            <h5><LinkToSet set={cardToDisplay.setname} /></h5>
-            <h5>Card Type: {cardToDisplay.type}</h5>
-            <h5>Casting Cost: {cardToDisplay.cmc}</h5>
-            <h5>Text: {cardToDisplay.text}</h5>
-            <h5>Rarity: {cardToDisplay.rarity}</h5>
+            <h2>{currentCard.name}</h2>
+            <h5><LinkToSet set={currentCard.setname} /></h5>
+            <h5>Card Type: {currentCard.type}</h5>
+            <h5>Casting Cost: {currentCard.cmc}</h5>
+            <h5>Text: {currentCard.text}</h5>
+            <h5>Rarity: {currentCard.rarity}</h5>
         </div>
     </div>
 }
 
-let mapStateToProps = (state, {match}) => {
-    let cardToDisplay = state.cardList.find(card =>
-        card.name === match.params.card);
-    return cardToDisplay;
+let mapStateToProps = (state) => {
+    return { currentCard: state.currentCard };
 }
 
-let CardScreen = connect(mapStateToProps)(CardScreenDumb);
+let CardScreen = connect(
+    mapStateToProps,
+)(CardScreenDumb);
 
 export default CardScreen;

@@ -7,7 +7,8 @@ const initialState = {
     isUserLoggedIn: false,
     searchInput: '',
     searchAutocomplete: [],
-    cardQueue: []
+    cardQueue: [],
+    currentCard: {}
 }
 
 let fallbackReducer = state => state; 
