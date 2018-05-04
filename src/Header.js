@@ -6,11 +6,14 @@ import {connect} from 'react-redux';
 import {fetchSetList, 
         fetchCardList,
         fetchCurrentSet} from './helperFunctions/headerFetchRequests';
+import { fetchUserQueue } from './fetch-data';
 import {updateSetList,
         updateCardList, 
         updateUserObject, 
         updateIsUserLoggedIn,
-        logoutUser} from './actions';
+        logoutUser,
+        updateQueue
+    } from './actions';
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
@@ -83,7 +86,10 @@ class Header extends Component {
 
     let LoginOrProfileOption = () => {
         if (isUserLoggedIn === true ) {
-            return  <ul className="headerList"><li><Link to='/profile'>{ this.props.userObject.username }</Link></li> 
+            return  <ul className="headerList"><li onClick={
+                () => fetchUserQueue(this.props.userObject.token)
+                        .then(res => this.props.dispatch(updateQueue(res)))
+            }><Link to='/profile'>{ this.props.userObject.username }</Link></li> 
                 <li onClick={() => {
                 localStorage.removeItem('userObject');
                 this.props.dispatch(logoutUser())}}>Logout</li>

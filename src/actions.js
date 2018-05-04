@@ -61,6 +61,13 @@ let updateCurrentCardAction = (state, action) => {
 }
 updateCurrentCardAction.toString = () => UPDATE_CURRENT_CARD;
 
+const UPDATE_QUEUE = "UPDATE_QUEUE";
+export let updateQueue = (payload) => ({type: UPDATE_QUEUE, payload});
+let updateQueueAction = (state, action) => {
+    return ({...state, cardQueue: action.payload});
+}
+updateQueue.toString = () => UPDATE_QUEUE;
+
 let reducers = {
     [updateUserObject]: updateUserObjectAction,
     [updateIsUserLoggedIn]: updateIsUserLoggedInAction,
@@ -70,7 +77,8 @@ let reducers = {
     [updateSearchResultsAction]: updateSearchResultsAction,
     [addToQueueAction]: addToQueueAction,
     [updateCurrentCardAction]: updateCurrentCardAction,
-    [logoutUserAction]: logoutUserAction
+    [logoutUserAction]: logoutUserAction,
+    [updateQueue]: updateQueueAction
 }
 
 export default reducers;
