@@ -1,7 +1,8 @@
 const UPDATE_USER_OBJECT = "UPDATE_USER_OBJECT";
 export let updateUserObject = (token) => ({type: UPDATE_USER_OBJECT, payload: token});
 let updateUserObjectAction = (state, action) => {
-    return ({...state, userObject: action.payload});
+    let newUserObject = Object.assign({}, action.payload);
+    return ({...state, userObject: newUserObject});
   }
 updateUserObject.toString = () => UPDATE_USER_OBJECT;
 
@@ -15,7 +16,7 @@ updateIsUserLoggedIn.toString = () => UPDATE_IS_USER_LOGGED_IN;
 const LOGOUT_USER = "LOGOUT_USER";
 export let logoutUser = () => ({type: LOGOUT_USER});
 let logoutUserAction = (state, action) => {
-    return ({...state, isUserLoggedIn: false});
+    return ({...state, isUserLoggedIn: false, userObject: {}});
 }
 logoutUserAction.toString = () => LOGOUT_USER;
 

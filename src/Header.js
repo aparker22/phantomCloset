@@ -14,7 +14,9 @@ import {updateSetList,
 import SearchBar from './search-bar';
 
 let mapStateToProps = (state) => {
-    return {setList: state.setList, isUserLoggedIn: state.isUserLoggedIn}
+    return {setList: state.setList, 
+            isUserLoggedIn: state.isUserLoggedIn,
+            userObject: state.userObject}
 };
 
 let mapDispatchToProps = (dispatch) => {
@@ -26,7 +28,7 @@ let checkLocalStorageForUserObject = (dispatch) => {
     let userObject = localStorage.getItem('userObject');
     if (userObject) {
         dispatch(updateIsUserLoggedIn());
-        return userObject;
+        return JSON.parse(userObject);
     } else {
         return {};
     }
@@ -51,7 +53,7 @@ class Header extends Component {
     }
     
     render(){
-    let {setList, isUserLoggedIn} = this.props;
+    let {setList, isUserLoggedIn, userObject} = this.props;
     let {active} = this.state;
 
     let toggleActive = (e) => {
@@ -81,7 +83,7 @@ class Header extends Component {
 
     let LoginOrProfileOption = () => {
         if (isUserLoggedIn === true ) {
-            return  <div><li><Link to='/profile'>Profile</Link></li> 
+            return  <div><li><Link to='/profile'>{ this.props.userObject.username }</Link></li> 
                 <li onClick={() => {
                 localStorage.removeItem('userObject');
                 this.props.dispatch(logoutUser())}}>Logout</li>

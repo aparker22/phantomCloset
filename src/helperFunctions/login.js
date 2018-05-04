@@ -5,6 +5,7 @@ let setLoginToLocalStorage = (userInfo) => {
 }
 
 export let loginWithUserData = (loginInformation) => {
+    console.log(loginInformation);
     return(fetch("http://localhost:5000/public/signin", 
     {method: "POST",
     body: loginInformation,
@@ -12,11 +13,12 @@ export let loginWithUserData = (loginInformation) => {
         "Content-Type": "application/json"
     })
     })
-    .then(res=>res.json())
+    .then(res => res.json())
     .then(res => setLoginToLocalStorage(res)))
 }
 
 export let createNewUserInDatabase = (loginInformation) => {
+    console.log(loginInformation);
     return(fetch('http://localhost:5000/public/createaccount', 
     {method: 'POST',
     body: loginInformation,

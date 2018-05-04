@@ -13,7 +13,8 @@ export let postCardToQueue = (input, token) =>
               "authorization": token
               })
       })
-    .then(res=>res.json());
+    .then(res => res.text()
+  );
   
 export let getCurrentCard = (card) =>
       fetch(`http://localhost:5000/public/cards/${card}`)

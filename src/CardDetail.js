@@ -9,13 +9,13 @@ let buttonLogic = (userObject, card, cardQueue, addToQueue, isUserLoggedIn) => {
     if (isUserLoggedIn) {
         return(
             <button onClick={
-                () =>
+                () => {
                 postCardToQueue({
                     cardId: card.cardid,
                     userId: userObject.id,
                     position: cardQueue.length
-                }, userObject.token).then(addToQueue({ card }))
-            } > Add Card to Queue
+                }, userObject.token).then(addToQueue(card))
+            }} > Add Card to Queue
             </button>
     )}
 }
